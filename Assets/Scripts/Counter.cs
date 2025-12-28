@@ -1,53 +1,57 @@
 using System;
 using System.Collections;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class Counter : MonoBehaviour
 {
-    private int _currentValue = 0;
+    public int CurrentValue { get; private set; } = 0;
+
     private int _additionalNumber = 1;
     private float _period = 0.5f;
 
-    [SerializeField] TextMeshProUGUI _text;
+    [SerializeField] InputReader _inputReader;
+    private Coroutine _coroutineCount;
 
-    private bool _isEnable;
-    private bool _isCount = true;
+    public event Action ValueChanged;
 
-    private void Start()
-    {
-        StartCoroutine(Count());
-    }
-
-    private void Update()
-    {
-        int mouseButtonLeft = 0;
-
-        if (Input.GetMouseButton(mouseButtonLeft))
-            _isCount = !(_isCount);
-    }
-
-    private IEnumerator Count()
-    {
-        while (_isEnable)
-        {
-            yield return new WaitUntil(() => (_isCount == true));
-            yield return new WaitForSecondsRealtime(_period);
-
-            _currentValue += _additionalNumber;
-            _text.text = _currentValue.ToString();
-        }
-    }
+    private bool _isCount = false;
 
     private void OnEnable()
     {
-        _isEnable = true;
+        _inputReader.LeftButtonClicked += StartAndStopCoroutine;
     }
 
     private void OnDisable()
     {
-        _isEnable = false;
+        _inputReader.LeftButtonClicked -= StartAndStopCoroutine;
+    }
+
+    private void StartAndStopCoroutine()
+    {
+        if (_isCount == true)
+        {
+            _isCount = false;
+            _coroutineCount = StartCoroutine(Count());
+        }
+        else
+        {
+            _isCount = true;
+
+            if (_coroutineCount != null)
+                StopCoroutine(_coroutineCount);
+        }
+    }
+
+    private IEnumerator Count()
+    {
+        bool isCount = true;
+
+        while (isCount)
+        {
+            yield return new WaitForSecondsRealtime(_period);
+
+            CurrentValue += _additionalNumber;
+            ValueChanged?.Invoke();
+        }
     }
 }
