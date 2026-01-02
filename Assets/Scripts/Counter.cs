@@ -4,26 +4,29 @@ using UnityEngine;
 
 public class Counter : MonoBehaviour
 {
+    [SerializeField] private InputReader _inputReader;
+
     public int CurrentValue { get; private set; } = 0;
+    public event Action ValueChanged;
 
     private int _additionalNumber = 1;
     private float _period = 0.5f;
 
-    [SerializeField] InputReader _inputReader;
     private Coroutine _coroutineCount;
-
-    public event Action ValueChanged;
-
     private bool _isCount = false;
 
-    private void OnEnable()
+    private IEnumerator Count()
     {
-        _inputReader.LeftButtonClicked += StartAndStopCoroutine;
-    }
+        bool isCount = true;
+        WaitForSecondsRealtime wait = new WaitForSecondsRealtime(_period);
 
-    private void OnDisable()
-    {
-        _inputReader.LeftButtonClicked -= StartAndStopCoroutine;
+        while (isCount)
+        {
+            yield return wait;
+
+            CurrentValue += _additionalNumber;
+            ValueChanged?.Invoke();
+        }
     }
 
     private void StartAndStopCoroutine()
@@ -42,16 +45,13 @@ public class Counter : MonoBehaviour
         }
     }
 
-    private IEnumerator Count()
+    private void OnEnable()
     {
-        bool isCount = true;
+        _inputReader.LeftButtonClicked += StartAndStopCoroutine;
+    }
 
-        while (isCount)
-        {
-            yield return new WaitForSecondsRealtime(_period);
-
-            CurrentValue += _additionalNumber;
-            ValueChanged?.Invoke();
-        }
+    private void OnDisable()
+    {
+        _inputReader.LeftButtonClicked -= StartAndStopCoroutine;
     }
 }

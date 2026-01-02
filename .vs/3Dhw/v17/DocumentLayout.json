@@ -11,7 +11,7 @@
       "RelativeMoniker": "D:0:0:{761DE8C2-9F85-5D54-1BA8-ED09CEC7049C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\inputreader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{761DE8C2-9F85-5D54-1BA8-ED09CEC7049C}|Assembly-CSharp.csproj|d:\\unitiprojects\\3dhw\\assets\\scripts\\view.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{761DE8C2-9F85-5D54-1BA8-ED09CEC7049C}|Assembly-CSharp.csproj|D:\\UnitiProjects\\3Dhw\\assets\\scripts\\view.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{761DE8C2-9F85-5D54-1BA8-ED09CEC7049C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\view.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -32,7 +32,7 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\InputReader.cs",
               "ToolTip": "D:\\UnitiProjects\\3Dhw\\Assets\\Scripts\\InputReader.cs",
               "RelativeToolTip": "Assets\\Scripts\\InputReader.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-28T14:41:21.009Z",
               "EditorCaption": ""
@@ -45,7 +45,7 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\Counter.cs",
               "ToolTip": "D:\\UnitiProjects\\3Dhw\\Assets\\Scripts\\Counter.cs",
               "RelativeToolTip": "Assets\\Scripts\\Counter.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAACUAAAAcAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAkwBgAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-25T12:10:46.56Z",
               "EditorCaption": ""
@@ -58,7 +58,7 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\View.cs",
               "ToolTip": "D:\\UnitiProjects\\3Dhw\\Assets\\Scripts\\View.cs",
               "RelativeToolTip": "Assets\\Scripts\\View.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAoAAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-28T15:17:09.338Z",
               "EditorCaption": ""

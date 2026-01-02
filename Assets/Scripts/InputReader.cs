@@ -5,7 +5,7 @@ public class InputReader : MonoBehaviour
 {
     public event Action LeftButtonClicked;
 
-    private void LateUpdate()
+    private void Update()
     {
         int mouseButtonLeft = 0;
 
