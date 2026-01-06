@@ -6,8 +6,8 @@ public class Counter : MonoBehaviour
 {
     [SerializeField] private InputReader _inputReader;
 
-    public int CurrentValue { get; private set; } = 0;
     public event Action ValueChanged;
+    public int CurrentValue { get; private set; } = 0;
 
     private int _additionalNumber = 1;
     private float _period = 0.5f;
@@ -15,18 +15,14 @@ public class Counter : MonoBehaviour
     private Coroutine _coroutineCount;
     private bool _isCount = false;
 
-    private IEnumerator Count()
+    private void OnEnable()
     {
-        bool isCount = true;
-        WaitForSecondsRealtime wait = new WaitForSecondsRealtime(_period);
+        _inputReader.LeftButtonClicked += StartAndStopCoroutine;
+    }
 
-        while (isCount)
-        {
-            yield return wait;
-
-            CurrentValue += _additionalNumber;
-            ValueChanged?.Invoke();
-        }
+    private void OnDisable()
+    {
+        _inputReader.LeftButtonClicked -= StartAndStopCoroutine;
     }
 
     private void StartAndStopCoroutine()
@@ -45,13 +41,17 @@ public class Counter : MonoBehaviour
         }
     }
 
-    private void OnEnable()
+    private IEnumerator Count()
     {
-        _inputReader.LeftButtonClicked += StartAndStopCoroutine;
-    }
+        bool isCount = true;
+        WaitForSecondsRealtime wait = new WaitForSecondsRealtime(_period);
 
-    private void OnDisable()
-    {
-        _inputReader.LeftButtonClicked -= StartAndStopCoroutine;
+        while (isCount)
+        {
+            yield return wait;
+
+            CurrentValue += _additionalNumber;
+            ValueChanged?.Invoke();
+        }
     }
 }

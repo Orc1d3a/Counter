@@ -11,11 +11,6 @@ public class View : MonoBehaviour
         _text.text = "0";
     }
 
-    private void ChangeText()
-    {
-        _text.text = _counter.CurrentValue.ToString();
-    }
-
     private void OnEnable()
     {
         _counter.ValueChanged += ChangeText;
@@ -24,5 +19,10 @@ public class View : MonoBehaviour
     private void OnDisable()
     {
         _counter.ValueChanged -= ChangeText;
+    }
+
+    private void ChangeText()
+    {
+        _text.text = _counter.CurrentValue.ToString();
     }
 }
